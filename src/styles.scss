@@ -1,0 +1,16 @@
+header {
+  color: white;
+  background-color: black;
+}
+
+footer {
+  height: 30px;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+
+  p {
+    margin: 0;
+  }
+}
