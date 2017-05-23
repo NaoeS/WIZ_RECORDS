@@ -1,3 +1,7 @@
+body, html {
+  font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
 header {
   color: white;
   background-color: black;
@@ -13,4 +17,12 @@ footer {
   p {
     margin: 0;
   }
+}
+
+table {
+  font-size: 12px;
+}
+
+button {
+  font-size: 12px !important;
 }
