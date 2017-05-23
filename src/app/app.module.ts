@@ -4,19 +4,41 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 // Components
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { DeckNewComponent } from './components/deck/new/deck-new.component';
+import { DeckIndexComponent } from './components/deck/index/deck-index.component';
+import { RecordNewComponent } from './components/record/new/record-new.component';
+import { RecordIndexComponent } from './components/record/index/record-index.component';
+import { RecordEditComponent } from './components/record/edit/record-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    DeckNewComponent,
+    DeckIndexComponent,
+    RecordNewComponent,
+    RecordIndexComponent,
+    RecordEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'deck/new', component: DeckNewComponent },
+      { path: 'deck/index', component: DeckIndexComponent },
+      { path: 'record/new', component: RecordNewComponent },
+      { path: 'record/index', component: RecordIndexComponent },
+      { path: 'record/edit/:id', component: RecordEditComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
