@@ -1,3 +1,47 @@
 th {
   width: 25%;
 }
+
+.container {
+  height: 100%;
+}
+
+.symbol {
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 10px;/* width,heightの半分 */
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.green {
+  background-color: #93CDA4;
+}
+
+.red {
+  background-color: #EBA688;
+}
+
+.black {
+  background-color: #C6BFB9;
+}
+
+.blue {
+  background-color: #A6DDF1;
+}
+
+.white {
+  background-color: #FCFBD0;
+}
+
+.my-deck {
+  color: red;
+}
+
+.table-responsive {
+  height: 60%;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}

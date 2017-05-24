@@ -1,6 +1,7 @@
 <div class="container">
   <h5>登録デッキ一覧</h5>
   <hr>
+  <small>※赤文字はマイデッキです。</small>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover table-condensed">
       <thead>
@@ -13,13 +14,23 @@
       </thead>
       <tbody>
         <tr *ngFor="let deck of decks">
-          <td>{{deck.name}}</td>
-          <td>青黒白</td>
+          <td [class.my-deck]="deck.isMyDeck === true">{{deck.name}}</td>
           <td>
-            <button class="btn btn-primary" (click)="onEdit(deck.id)">変更</button>
+            <div *ngIf="deck.color.green" class="symbol green">G</div>
+            <div *ngIf="deck.color.red" class="symbol red">R</div>
+            <div *ngIf="deck.color.black" class="symbol black">B</div>
+            <div *ngIf="deck.color.blue" class="symbol blue">U</div>
+            <div *ngIf="deck.color.white" class="symbol white">W</div>
           </td>
-          <td>
-            <button class="btn btn-primary" (click)="onDelete(deck.id)">削除</button>
+          <td class="text-center">
+            <button class="btn btn-success center-block" (click)="onEdit(deck.id)">
+              <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+            </button>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-danger" (click)="onDelete(deck.id)">
+              <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+            </button>
           </td>
         </tr>
       </tbody>
