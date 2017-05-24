@@ -21,7 +21,7 @@
       <input type="checkbox" name="isMyDeck" [checked]="newDeck.isMyDeck" (change)="onChangeIsMydeck($event)">
       <small>設定を行うと戦績登録が可能となります。</small>
     </div>
-    <button type="button" class="btn btn-success btn-block" (click)="onSubmit()">登録</button>
+    <button type="button" class="btn btn-success btn-block" (click)="onClickSubmit()">登録</button>
     <button type="button" class="btn btn-primary btn-block" [routerLink]="['']">戻る</button>
   </form>
 </div>

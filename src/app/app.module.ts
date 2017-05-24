@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { DeckNewComponent } from './components/deck/new/deck-new.component';
 import { DeckIndexComponent } from './components/deck/index/deck-index.component';
+import { DeckEditComponent } from './components/deck/edit/deck-edit.component';
 import { RecordNewComponent } from './components/record/new/record-new.component';
 import { RecordIndexComponent } from './components/record/index/record-index.component';
 import { RecordEditComponent } from './components/record/edit/record-edit.component';
@@ -21,6 +22,7 @@ import { RecordEditComponent } from './components/record/edit/record-edit.compon
     HomeComponent,
     DeckNewComponent,
     DeckIndexComponent,
+    DeckEditComponent,
     RecordNewComponent,
     RecordIndexComponent,
     RecordEditComponent
@@ -35,6 +37,7 @@ import { RecordEditComponent } from './components/record/edit/record-edit.compon
       { path: '', component: HomeComponent },
       { path: 'deck/new', component: DeckNewComponent },
       { path: 'deck/index', component: DeckIndexComponent },
+      { path: 'deck/edit/:id', component: DeckEditComponent },
       { path: 'record/new', component: RecordNewComponent },
       { path: 'record/index', component: RecordIndexComponent },
       { path: 'record/edit/:id', component: RecordEditComponent

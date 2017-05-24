@@ -23,12 +23,12 @@
             <div *ngIf="deck.color.white" class="symbol white">W</div>
           </td>
           <td class="text-center">
-            <button class="btn btn-success center-block" (click)="onEdit(deck.id)">
+            <button class="btn btn-success center-block" (click)="onClickEdit(deck.id)">
               <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
             </button>
           </td>
           <td class="text-center">
-            <button class="btn btn-danger" (click)="onDelete(deck.id)">
+            <button class="btn btn-danger" (click)="onClickDelete(deck.id)">
               <i class="fa fa-times fa-lg" aria-hidden="true"></i>
             </button>
           </td>

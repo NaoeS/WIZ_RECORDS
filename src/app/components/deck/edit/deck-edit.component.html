@@ -1,0 +1,27 @@
+<div class="container">
+  <h5>デッキ編集</h5>
+  <hr>
+  <form *ngIf="deck">
+    <div class="form-group">
+      <label>・デッキ名</label>
+      <input type="text" name="name" class="form-control" [(ngModel)]="deck.name">
+    </div>
+    <div class="checkbox form-group">
+      <label>・カラー</label>
+      <br>
+      <input type="checkbox" name="green" [checked]="deck.color.green" (change)="onChangeColor($event)">緑
+      <input type="checkbox" name="red" [checked]="deck.color.red" (change)="onChangeColor($event)">赤
+      <input type="checkbox" name="black" [checked]="deck.color.black" (change)="onChangeColor($event)">黒
+      <input type="checkbox" name="blue" [checked]="deck.color.blue" (change)="onChangeColor($event)">青
+      <input type="checkbox" name="white" [checked]="deck.color.white" (change)="onChangeColor($event)">白
+    </div>
+    <div class="checkbox form-group">
+      <label>・マイデッキ設定</label>
+      <br>
+      <input type="checkbox" name="isMyDeck" [checked]="deck.isMyDeck" (change)="onChangeIsMydeck($event)">
+      <small>設定を行うと戦績登録が可能となります。</small>
+    </div>
+    <button type="button" class="btn btn-success btn-block" (click)="onClickEdit()">変更</button>
+    <button type="button" class="btn btn-primary btn-block" [routerLink]="['/deck/index']">戻る</button>
+  </form>
+</div>

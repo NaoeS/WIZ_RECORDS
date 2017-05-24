@@ -38,7 +38,7 @@ export class DeckNewComponent implements OnInit {
     this.newDeck.isMyDeck = event.currentTarget.checked;
   };
 
-  onSubmit() {
+  onClickSubmit() {
     if (this.newDeck.name === '') { return; }
     this.newDeck.id = new Date().getTime().toString(16) + Math.floor(10000 * Math.random()).toString(16);
     this._deckService.create(this.newDeck);

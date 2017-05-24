@@ -15,7 +15,21 @@ export class DeckIndexComponent implements OnInit {
   constructor(private _deckService: DeckService, private _router: Router) { }
 
   ngOnInit() {
-    this.decks = this._deckService.fetch();
+    this.fetchIndex();
   }
 
+  onClickEdit(id: string) {
+    this._router.navigate(['/deck/edit', id]);
+  }
+
+  onClickDelete(id: string) {
+    if ( confirm('デッキを削除しますか？') === true ) {
+      this._deckService.delete(id);
+      this.fetchIndex();
+    }
+  }
+
+  private fetchIndex() {
+    this.decks = this._deckService.fetch();
+  }
 }
