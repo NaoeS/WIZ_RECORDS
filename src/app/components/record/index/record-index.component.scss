@@ -2,8 +2,14 @@ th {
   width: 25%;
 }
 
-#deck-index {
+#record-index {
   height: 100%;
+
+  #title {
+    h5, .button-wrapper {
+      width: 50%;
+    }
+  }
 }
 
 .symbol {
@@ -42,7 +48,7 @@ th {
 
 .table-responsive {
   min-height: 10px;
-  height: 60%;
+  max-height: calc(60% - 76px);
   overflow-y: scroll;
   margin-bottom: 20px;
 }

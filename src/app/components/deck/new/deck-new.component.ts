@@ -20,7 +20,8 @@ export class DeckNewComponent implements OnInit {
       blue: false,
       white: false
     },
-    isMyDeck: false
+    isMyDeck: false,
+    records: []
   };
 
   constructor(private _deckService: DeckService, private _router: Router) { }

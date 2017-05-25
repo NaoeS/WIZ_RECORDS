@@ -1,6 +1,6 @@
-<div class="container">
+<div>
   <div id="notice">
-    WizRecords は MTG 用の戦績管理アプリケーションです。ブラウザにデータを保存するため、キャッシュを削除するとデータが消えます。ご注意を。
+    ようこそ。WizRecords は MTG 用の戦績管理アプリです。データはブラウザ保存のためキャッシュを消したら吹っ飛びます。
   </div>
   <div id="buttons">
     <button type="button" class="btn btn-primary btn-block" [routerLink]="['deck/new']">デッキ登録</button>
@@ -8,4 +8,9 @@
     <button type="button" class="btn btn-info btn-block" [routerLink]="['record/index']">戦績一覧</button>
     <button type="button" class="btn btn-warning btn-block">環境設定</button>
   </div>
+  <footer>
+    <div>
+      <p class="text-muted">Copyright 2017 NaoeS All Rights Reserved.</p>
+    </div>
+  </footer>
 </div>

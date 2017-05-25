@@ -1,3 +1,52 @@
-<p>
-  record-index works!
-</p>
+<div id="record-index">
+  <div id="title" class="row">
+    <h5 class="col-sm-6">戦績一覧</h5>
+    <div class="button-wrapper col-sm-6">
+      <button type="button" class="btn btn-info btn-block" [routerLink]="['']">サマリー表示</button>
+    </div>
+  </div>
+  <hr>
+  <div class="form-group">
+    <small>マイデッキを選択してください</small>
+    <select
+      required=""
+      class="form-control custom-select"
+      [(ngModel)]="records">
+      <option value="" ></option>
+      <option *ngFor="let deck of myDecks" [ngValue]="deck.records">{{deck.name}}</option>
+    </select>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>対戦デッキ</th>
+          <th>勝敗</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of records">
+          <td>{{record.date}}</td>
+          <td>{{record.oponnentDeck}}</td>
+          <td>
+            <p *ngIf="record.match.isVictory">
+              勝利
+            </p>
+            <p *ngIf="!record.match.isVictory">
+              敗北
+            </p>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-success center-block" (click)="onClickShowModal(record)">
+              <i class="fa fa-clipboard fa-lg" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button type="button" class="btn btn-warning btn-block" [routerLink]="['']">戦績登録</button>
+  <button type="button" class="btn btn-primary btn-block" [routerLink]="['']">戻る</button>
+</div>
