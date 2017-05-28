@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { DatePickerModule } from 'ng2-datepicker';
 
 // Components
 import { AppComponent } from './app.component';
@@ -38,11 +39,12 @@ import { RecordEditComponent } from './components/record/edit/record-edit.compon
       { path: 'deck/new', component: DeckNewComponent },
       { path: 'deck/index', component: DeckIndexComponent },
       { path: 'deck/edit/:id', component: DeckEditComponent },
-      { path: 'record/new', component: RecordNewComponent },
+      { path: 'record/new/:id', component: RecordNewComponent },
       { path: 'record/index', component: RecordIndexComponent },
       { path: 'record/edit/:id', component: RecordEditComponent
       }
-    ])
+    ]),
+    DatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

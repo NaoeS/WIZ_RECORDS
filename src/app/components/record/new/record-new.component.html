@@ -1,3 +1,57 @@
-<p>
-  record-new works!
-</p>
+<div>
+  <h5 [hidden]="!myDeck">戦績登録（{{myDeck.name}}）</h5>
+  <hr>
+  <div class="form-group">
+    <label>・対戦日付（必須）</label>
+    <ng2-datepicker [options]="options" [(ngModel)]="date"></ng2-datepicker>
+  </div>
+  <div class="form-group">
+    <label>・対戦デッキ（必須）</label>
+    <select
+      required=""
+      class="form-control custom-select"
+      [(ngModel)]="params.opDeckName">
+      <option value="" ></option>
+      <option *ngFor="let deck of decks" [ngValue]="deck.name">{{deck.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>・対戦結果（必須）</label>
+    <select
+      required=""
+      class="form-control custom-select"
+      (change)="resetGameResult()"
+      [(ngModel)]="params.result">
+      <option value="" ></option>
+      <option *ngFor="let st of resultSt" [ngValue]="st.state">{{st.str}}</option>
+    </select>
+  </div>
+  <div [hidden]="!params.result" class="form-group">
+    <label>・マッチ内容（必須）</label>
+    <select
+      required=""
+      class="form-control custom-select"
+      [(ngModel)]="params.match">
+      <option value="" ></option>
+      <option *ngFor="let pattern of matchPt[params.result]" [ngValue]="pattern.val">{{pattern.str}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>・場所</label>
+    <input
+      required=""
+      type="text"
+      class="form-control"
+      [(ngModel)]="params.place">
+  </div>
+  <div class="form-group">
+    <label>・メモ</label>
+    <input
+      required=""
+      type="text"
+      class="form-control"
+      [(ngModel)]="params.notice">
+  </div>
+  <button type="button" class="btn btn-success btn-block" (click)="onClickSubmit()">登録</button>
+  <button type="button" class="btn btn-primary btn-block" [routerLink]="['/record/index']">戻る</button>
+</div>

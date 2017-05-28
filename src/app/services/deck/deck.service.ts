@@ -25,6 +25,13 @@ export class DeckService {
     localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(items));
   }
 
+  createRecord(params: any, id: string) {
+    const _deck = this.find(id);
+    _deck.records = _deck.records || [];
+    _deck.records.push(params);
+    this.edit(_deck);
+  }
+
   edit(params: any): void {
     this.delete(params.id);
     const items = this.fetch().concat(params);

@@ -12,8 +12,8 @@ import { mockData } from './mock';
   providers: [ DeckService ]
 })
 export class RecordIndexComponent implements OnInit {
-  records: Array<any>;
   myDecks: Array<any>;
+  currentDeck: any;
 
   constructor(private _deckService: DeckService, private _router: Router) { }
 
@@ -25,10 +25,23 @@ export class RecordIndexComponent implements OnInit {
     this._router.navigate(['/record/edit', id]);
   }
 
+  onClickNew(id: string) {
+    this._router.navigate(['/record/new', id]);
+  }
+
   onClickDelete(id: string) {
     if ( confirm('レコードを削除しますか？') === true ) {
       console.log('record deleted');
     }
+  }
+
+  sortRecord(records: Array<any>) {
+    if (!records) {
+      return [];
+    }
+    return records.sort((a, b) => {
+      return (a.date > b.date ? 1 : -1);
+    });
   }
 
   private _fetchMyDecks() {
@@ -36,8 +49,9 @@ export class RecordIndexComponent implements OnInit {
   }
 
   private _setMyDecks() {
-    // const decks = this._fetchMyDecks();
-    // this.myDecks = decks;
-    this.myDecks = mockData.decks;
+    this.myDecks = this._fetchMyDecks();
+    this.currentDeck = this.myDecks[0];
+    // this.myDecks = mockData.decks;
+    // this.currentDeck = this.myDecks[0];
   }
 }
