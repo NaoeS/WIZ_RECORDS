@@ -42,9 +42,67 @@
             </p>
           </td>
           <td class="text-center">
-            <button class="btn btn-success center-block" (click)="onClickShowModal(record)">
+            <button class="btn btn-success center-block" (click)="dlg.open=true">
               <i class="fa fa-clipboard fa-lg" aria-hidden="true"></i>
             </button>
+            <ng2-dialog #dlg >
+              <div class="card">
+                <div class="card-header">対戦日付</div>
+                <div class="card-block">
+                  <p class="card-text">{{record.date}}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">対戦デッキ</div>
+                <div class="card-block">
+                  <p class="card-text">{{record.opDeckName}}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">勝敗</div>
+                <div class="card-block">
+                  <div class="card-text">
+                    <p *ngIf="record.result === 'victory'">
+                      勝利
+                    </p>
+                    <p *ngIf="record.result === 'defeat'">
+                      敗北
+                    </p>
+                    <p *ngIf="record.result === 'draw'">
+                      引分
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">マッチ内容</div>
+                <div class="card-block">
+                  <div class="card-text">
+                    <p>
+                      game1: {{getResultString(record.match.game1)}}
+                    </p>
+                    <p>
+                      game2: {{getResultString(record.match.game2)}}
+                    </p>
+                    <p>
+                      game3: {{getResultString(record.match.game3)}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">対戦場所</div>
+                <div class="card-block">
+                  <p class="card-text">{{record.place}}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">メモ</div>
+                <div class="card-block">
+                  <p class="card-text">{{record.notice}}</p>
+                </div>
+              </div>
+            </ng2-dialog>
           </td>
         </tr>
       </tbody>

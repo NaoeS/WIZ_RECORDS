@@ -44,6 +44,19 @@ export class RecordIndexComponent implements OnInit {
     });
   }
 
+  getResultString(result: string) {
+    switch (result) {
+      case 'victory':
+        return '勝利';
+      case 'defeat':
+        return '敗北';
+      case 'draw':
+        return '引分';
+      default:
+        return '';
+    };
+  }
+
   private _fetchMyDecks() {
     return this._deckService.fetchMyDecks();
   }

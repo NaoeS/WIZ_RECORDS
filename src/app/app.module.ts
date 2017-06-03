@@ -16,6 +16,7 @@ import { DeckEditComponent } from './components/deck/edit/deck-edit.component';
 import { RecordNewComponent } from './components/record/new/record-new.component';
 import { RecordIndexComponent } from './components/record/index/record-index.component';
 import { RecordEditComponent } from './components/record/edit/record-edit.component';
+import { Ng2DialogComponent } from 'ng2dialog/ng2-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RecordEditComponent } from './components/record/edit/record-edit.compon
     DeckEditComponent,
     RecordNewComponent,
     RecordIndexComponent,
-    RecordEditComponent
+    RecordEditComponent,
+    Ng2DialogComponent
   ],
   imports: [
     BrowserModule,

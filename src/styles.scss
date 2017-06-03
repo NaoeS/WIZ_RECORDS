@@ -25,3 +25,38 @@ table {
     font-size: 12px !important;
   }
 }
+
+.modal {
+  margin-top: 65px;
+  background: transparent !important;
+  z-index: 9998 !important;
+  height: 90%;
+
+  .dlg {
+    min-width: 90%;
+    height: 100%;
+    background: rgba(53, 47, 47, 0.6) !important;
+
+    .closeIc {
+      z-index: 9999;
+    }
+    .ctnr {
+      height: 100%;
+
+      .content {
+        margin: 0.5rem !important;
+        text-align: left;
+        max-height: 100%;
+        overflow-y: scroll;
+        &.last-child {
+          margin-bottom: 16px;
+        }
+
+        .card-header {
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
