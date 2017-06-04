@@ -5,7 +5,7 @@ export const matchPattern = {
       val: {
         game1: 'victory',
         game2: 'victory',
-        game3: 'victory'
+        game3: ''
       }
     },
     {

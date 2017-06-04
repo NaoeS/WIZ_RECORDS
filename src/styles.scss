@@ -43,6 +43,10 @@ table {
     .ctnr {
       height: 100%;
 
+      .modal-title {
+        text-align: center;
+      }
+
       .content {
         margin: 0.5rem !important;
         text-align: left;

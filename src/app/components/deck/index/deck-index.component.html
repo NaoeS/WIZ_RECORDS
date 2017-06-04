@@ -21,6 +21,7 @@
             <div *ngIf="deck.color.black" class="symbol black">B</div>
             <div *ngIf="deck.color.blue" class="symbol blue">U</div>
             <div *ngIf="deck.color.white" class="symbol white">W</div>
+            <div *ngIf="isColorless(deck)" class="symbol colorless"></div>
           </td>
           <td class="text-center">
             <button class="btn btn-success center-block" (click)="onClickEdit(deck.id)">

@@ -2,7 +2,7 @@
   <div id="title" class="row">
     <h5 class="col-sm-6">戦績一覧</h5>
     <div class="button-wrapper col-sm-6">
-      <button type="button" class="btn btn-info btn-block" [routerLink]="['']">サマリー表示</button>
+      <button type="button" class="btn btn-info btn-block" (click)="summaryModal.open=true">サマリー表示</button>
     </div>
   </div>
   <hr>
@@ -42,10 +42,10 @@
             </p>
           </td>
           <td class="text-center">
-            <button class="btn btn-success center-block" (click)="dlg.open=true">
+            <button class="btn btn-success center-block" (click)="recordModal.open=true">
               <i class="fa fa-clipboard fa-lg" aria-hidden="true"></i>
             </button>
-            <ng2-dialog #dlg >
+            <ng2-dialog #recordModal>
               <div class="card">
                 <div class="card-header">対戦日付</div>
                 <div class="card-block">
@@ -79,13 +79,13 @@
                 <div class="card-block">
                   <div class="card-text">
                     <p>
-                      game1: {{getResultString(record.match.game1)}}
+                      Game1: {{getResultString(record.match.game1)}}
                     </p>
                     <p>
-                      game2: {{getResultString(record.match.game2)}}
+                      Game2: {{getResultString(record.match.game2)}}
                     </p>
                     <p>
-                      game3: {{getResultString(record.match.game3)}}
+                      Game3: {{getResultString(record.match.game3)}}
                     </p>
                   </div>
                 </div>
@@ -111,3 +111,43 @@
   <button type="button" class="btn btn-warning btn-block" (click)="onClickNew(currentDeck.id)">戦績登録</button>
   <button type="button" class="btn btn-primary btn-block" [routerLink]="['']">戻る</button>
 </div>
+<ng2-dialog #summaryModal>
+  <div class="card">
+    <b class="modal-title">{{currentDeck.name}}</b>
+    <div class="card-header">全体戦績</div>
+    <div class="card-block">
+      <p class="card-text">対戦数：{{getVictorySum() + getDefeatSum() + getDrawSum()}}</p>
+      <p class="card-text">勝利数：{{getVictorySum()}}</p>
+      <p class="card-text">敗北数：{{getDefeatSum()}}</p>
+      <p class="card-text">引分数：{{getDrawSum()}}</p>
+      <p class="card-text">勝率：{{getWinRate()}}％</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">マッチ戦績（Game1）</div>
+    <div class="card-block">
+      <p class="card-text">勝利数：{{getMatchData('game1', 'victory')}}</p>
+      <p class="card-text">敗北数：{{getMatchData('game1', 'defeat')}}</p>
+      <p class="card-text">引分数：{{getMatchData('game1', 'draw')}}</p>
+      <p class="card-text">勝率：{{getWinMatchRate('game1')}}％</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">マッチ戦績（Game2）</div>
+    <div class="card-block">
+      <p class="card-text">勝利数：{{getMatchData('game2', 'victory')}}</p>
+      <p class="card-text">敗北数：{{getMatchData('game2', 'defeat')}}</p>
+      <p class="card-text">引分数：{{getMatchData('game2', 'draw')}}</p>
+      <p class="card-text">勝率：{{getWinMatchRate('game2')}}％</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">マッチ戦績（Game3）</div>
+    <div class="card-block">
+      <p class="card-text">勝利数：{{getMatchData('game3', 'victory')}}</p>
+      <p class="card-text">敗北数：{{getMatchData('game3', 'defeat')}}</p>
+      <p class="card-text">引分数：{{getMatchData('game3', 'draw')}}</p>
+      <p class="card-text">勝率：{{getWinMatchRate('game3')}}％</p>
+    </div>
+  </div>
+</ng2-dialog>

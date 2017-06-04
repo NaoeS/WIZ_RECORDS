@@ -5,6 +5,8 @@ import { DeckService } from '../../../services/deck/deck.service';
 
 import { mockData } from './mock';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-record-index',
   templateUrl: './record-index.component.html',
@@ -12,7 +14,7 @@ import { mockData } from './mock';
   providers: [ DeckService ]
 })
 export class RecordIndexComponent implements OnInit {
-  myDecks: Array<any>;
+  myDecks: any[];
   currentDeck: any;
 
   constructor(private _deckService: DeckService, private _router: Router) { }
@@ -55,6 +57,49 @@ export class RecordIndexComponent implements OnInit {
       default:
         return '';
     };
+  }
+
+  getVictorySum() {
+    return _.filter(this.currentDeck.records, (r) => {
+      return r['result'] === 'victory';
+    }).length;
+  }
+
+  getDefeatSum() {
+    return _.filter(this.currentDeck.records, (r) => {
+      return r['result'] === 'defeat';
+    }).length;
+  }
+
+  getDrawSum() {
+    return _.filter(this.currentDeck.records, (r) => {
+      return r['result'] === 'draw';
+    }).length;
+  }
+
+  getWinRate() {
+    const vCnt = this.getVictorySum();
+    const deCnt = this.getDefeatSum();
+    const drCnt = this.getDrawSum();
+    return ((vCnt / (vCnt + deCnt + drCnt)) * 100).toFixed(2);
+  }
+
+  getMatchData(game: string, result: string) {
+    let count = 0;
+    _.each(this.currentDeck.records, (r) => {
+      if (r['match'][game] === result) {
+        count++;
+      };
+    });
+
+    return count;
+  }
+
+  getWinMatchRate(game: string) {
+    const vCnt = this.getMatchData(game, 'victory');
+    const deCnt = this.getMatchData(game, 'defeat');
+    const drCnt = this.getMatchData(game, 'draw');
+    return ((vCnt / (vCnt + deCnt + drCnt)) * 100).toFixed(2);
   }
 
   private _fetchMyDecks() {
