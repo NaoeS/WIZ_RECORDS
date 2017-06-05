@@ -109,6 +109,10 @@ export class RecordIndexComponent implements OnInit {
   private _setMyDecks() {
     this.myDecks = this._fetchMyDecks();
     this.currentDeck = this.myDecks[0];
+    if (this.myDecks.length === 0) {
+      alert('マイデッキを登録してください');
+      this._router.navigate(['']);
+    }
     // this.myDecks = mockData.decks;
     // this.currentDeck = this.myDecks[0];
   }
