@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const DECK_STORAGE_KEY = 'decks';
+const DECK_STORAGE_KEY = 'wizRecords.decks';
 
 @Injectable()
 export class DeckService {
@@ -28,6 +28,7 @@ export class DeckService {
   createRecord(params: any, id: string) {
     const _deck = this.find(id);
     _deck.records = _deck.records || [];
+    params.index = _deck.records.length;
     _deck.records.push(params);
     this.edit(_deck);
   }

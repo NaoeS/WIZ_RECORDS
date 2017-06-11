@@ -9,8 +9,6 @@ import * as _ from 'lodash';
 export class AppComponent implements OnInit {
   title = 'app works!';
 
-  ngOnInit() {
-    console.log(_.VERSION);
-  }
+  ngOnInit() { }
 
 }

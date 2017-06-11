@@ -48,7 +48,6 @@ export class RecordNewComponent implements OnInit {
   }
 
   resetGameResult() {
-    console.log(this.date);
     this.params.match = {
       game1: '',
       game2: '',

@@ -14,6 +14,7 @@ import * as _ from 'lodash';
   providers: [ DeckService ]
 })
 export class RecordIndexComponent implements OnInit {
+  RECORD_INDEX_STORAGE_KEY = 'wizRecords.record.index';
   myDecks: any[];
   currentDeck: any;
 
@@ -23,8 +24,8 @@ export class RecordIndexComponent implements OnInit {
     this._setMyDecks();
   }
 
-  onClickEdit(id: string) {
-    this._router.navigate(['/record/edit', id]);
+  onClickEdit(deck_id: string, record_index: number) {
+    this._router.navigate(['/record/edit', deck_id, record_index]);
   }
 
   onClickNew(id: string) {
@@ -102,18 +103,35 @@ export class RecordIndexComponent implements OnInit {
     return ((vCnt / (vCnt + deCnt + drCnt)) * 100).toFixed(2);
   }
 
+  saveSelectedDeck() {
+    if (this.currentDeck) {
+      localStorage.setItem(this.RECORD_INDEX_STORAGE_KEY, this.currentDeck.id);
+    }
+  }
+
   private _fetchMyDecks() {
     return this._deckService.fetchMyDecks();
   }
 
   private _setMyDecks() {
     this.myDecks = this._fetchMyDecks();
-    this.currentDeck = this.myDecks[0];
     if (this.myDecks.length === 0) {
       alert('マイデッキを登録してください');
       this._router.navigate(['']);
     }
-    // this.myDecks = mockData.decks;
-    // this.currentDeck = this.myDecks[0];
+
+    this.currentDeck = this.myDecks[0];
+    const savedDeckId = localStorage.getItem(this.RECORD_INDEX_STORAGE_KEY);
+    if (!savedDeckId) {
+      return;
+    }
+    const findDeck = this._deckService.find(savedDeckId);
+    if (findDeck) {
+      let index: number;
+      this.myDecks.forEach((deck, i) => {
+        if (deck.id === findDeck.id) { index = i; }
+      });
+      this.currentDeck = this.myDecks[index];
+    }
   }
 }
