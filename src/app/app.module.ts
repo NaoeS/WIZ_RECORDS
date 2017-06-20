@@ -43,7 +43,7 @@ import { Ng2DialogComponent } from 'ng2dialog/ng2-dialog.component';
       { path: 'deck/edit/:id', component: DeckEditComponent },
       { path: 'record/new/:id', component: RecordNewComponent },
       { path: 'record/index', component: RecordIndexComponent },
-      { path: 'record/edit/:id', component: RecordEditComponent
+      { path: 'record/edit/:deck_id/:record_index', component: RecordEditComponent
       }
     ], { useHash: true }),
     DatePickerModule

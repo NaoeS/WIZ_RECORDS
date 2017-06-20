@@ -21,7 +21,8 @@ export class DeckNewComponent implements OnInit {
       white: false
     },
     isMyDeck: false,
-    records: []
+    records: [],
+    format: ''
   };
 
   constructor(private _deckService: DeckService, private _router: Router) { }

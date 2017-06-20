@@ -28,7 +28,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let record of sortRecord(currentDeck.records)">
+        <tr *ngFor="let record of currentDeck.records; let i = index">
           <td>{{record.date}}</td>
           <td>{{record.opDeckName}}</td>
           <td>
@@ -104,10 +104,10 @@
                 </div>
               </div>
               <div class="text-right">
-                <button class="btn btn-success center-block" (click)="onClickEdit(currentDeck.id, record.index)">
+                <button class="btn btn-success center-block" (click)="onClickEdit(currentDeck.id, i)">
                   編集<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
                 </button>
-                <button class="btn btn-danger" (click)="onClickDelete(i)">
+                <button class="btn btn-danger" (click)="onClickDelete(currentDeck.id, i)">
                   削除<i class="fa fa-times fa-lg" aria-hidden="true"></i>
                 </button>
               </div>

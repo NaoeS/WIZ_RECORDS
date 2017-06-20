@@ -32,19 +32,11 @@ export class RecordIndexComponent implements OnInit {
     this._router.navigate(['/record/new', id]);
   }
 
-  onClickDelete(id: string) {
-    if ( confirm('レコードを削除しますか？') === true ) {
-      console.log('record deleted');
+  onClickDelete(deck_id: string, record_index: number) {
+    if (confirm('戦績を削除しますか？') === true) {
+      this._deckService.deleteRecord(deck_id, record_index);
+      this._setMyDecks();
     }
-  }
-
-  sortRecord(records: Array<any>) {
-    if (!records) {
-      return [];
-    }
-    return records.sort((a, b) => {
-      return (a.date > b.date ? 1 : -1);
-    });
   }
 
   getResultString(result: string) {
@@ -119,7 +111,6 @@ export class RecordIndexComponent implements OnInit {
       alert('マイデッキを登録してください');
       this._router.navigate(['']);
     }
-
     this.currentDeck = this.myDecks[0];
     const savedDeckId = localStorage.getItem(this.RECORD_INDEX_STORAGE_KEY);
     if (!savedDeckId) {
