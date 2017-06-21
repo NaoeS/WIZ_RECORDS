@@ -8,6 +8,8 @@ import { DeckService } from '../../../services/deck/deck.service';
 import { matchPattern } from '../../../consts/match-pattern';
 import { resultState } from '../../../consts/result-state';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-record-new',
   templateUrl: './record-new.component.html',
@@ -45,6 +47,15 @@ export class RecordNewComponent implements OnInit {
         this.decks = this._deckService.fetch();
         this.myDeck = this._deckService.find(params['id']);
       });
+
+    const today = moment();
+    this.date = {
+      day: today.format('DD'),
+      month: today.format('MM'),
+      year: today.format('YYYY'),
+      formatted: `${today.format('YYYY')}-${today.format('MM')}-${today.format('DD')}`,
+      momentObj: today
+    };
   }
 
   resetGameResult() {
